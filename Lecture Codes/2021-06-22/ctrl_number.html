@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+</head>
+<body>
+    <div class="root" ng-app="myapp">
+        <section ng-controller="add_ctrl">
+            <h1>Addition of 2 Numbers</h1>
+            <p>{{a}} + {{b}} = {{a+b}}</p>
+        </section>
+    </div>
+
+    <script>
+        myapp= angular.module("myapp", []);
+        myapp.controller("add_ctrl", function($scope){
+            $scope.a= 69;
+            $scope.b= 420;
+        });
+    </script>
+</body>
+</html>

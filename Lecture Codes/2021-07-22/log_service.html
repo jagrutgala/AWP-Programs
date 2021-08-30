@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+</head>
+<body>
+    <div class="root" ng-app="myapp">
+        <section ng-controller="log_ctrl">
+            <h1>Plz check browser console for log information</h1>
+        </section>
+    </div>
+
+    <script type="text/javascript">
+        myapp= angular.module("myapp", [])
+        myapp.controller("log_ctrl", function($scope, $log) {
+            $log.log("I am Log");
+            $log.error("I am Error");
+            $log.warn("I am Warning");
+            $log.info("I am Information");
+            $log.debug("I am Debug");
+        });
+    </script>
+</body>
+</html>

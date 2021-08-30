@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <title>Document</title> -->
+    <script src=".\angular.min.js"></script>
+    <script src="data.js"></script>
+</head>
+<body>
+    <div class="root">
+        <div ng-controller="include_ctrl">
+            <ul ng-repeat="i in employee1">
+                <li> Name: {{i.name}}
+                    <ul>
+                        <li>{{i.gender}}</li>
+                        <li>{{i.salary}}</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

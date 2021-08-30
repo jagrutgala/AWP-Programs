@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+</head>
+<body>
+    <div class="root" ng-app="myapp" ng-controller="service_ctrl">
+        <label for="num1">Num1: </label> <input type="number" ng-model="num1", id="num1">
+        <label for="num2">Num2: </label> <input type="number" ng-model="num2", id="num2"> <br><br>
+        <label for="op">Operation: </label>
+        <select name="op" id="op" ng-model="op">
+            <option value="plus">plus</option>
+            <option value="minus">minus</option>
+            <option value="multi">multi</option>
+            <option value="div">div</option>
+        </select>
+        <button ng-click="calculate()">Calculate</button>
+        <p>Answer: {{ans}}</p>
+    </div>
+    <script>
+        myapp= angular.module("myapp", []);
+        myapp.factory("calculator", function(){
+            let cals= {};
+            cals.add= function(n1, n2) {
+                return (n1+ n2);
+            }
+            cals.sub= function(n1, n2) {
+                return (n1- n2);
+            }
+            cals.mul= function(n1, n2) {
+                return (n1* n2);
+            }
+            cals.div= function(n1, n2) {
+                return (n1/ n2);
+            }
+
+            return(cals);
+        });
+        myapp.controller("service_ctrl", function($scope, calculator){
+            $scope.ans= ""
+            $scope.calculate= function(){
+                let num1= $scope.num1;
+                let num2= $scope.num2;
+                let op= $scope.op;
+                if(op == "plus"){
+                    $scope.ans= calculator.add(num1, num2);
+                } else if (op == "minus") {
+                    $scope.ans= calculator.sub(num1, num2);
+                } else if (op == "multi") {
+                    $scope.ans= calculator.mul(num1, num2);
+                } else if (op == "div") {
+                    $scope.ans= calculator.div(num1, num2);
+                }
+                return($scope.ans);
+
+            }
+        });
+    </script>
+</body>
+</html>

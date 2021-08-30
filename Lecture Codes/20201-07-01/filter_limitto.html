@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+</head>
+<body>
+    <div class="root" ng-app="myapp" ng-controller="limit_ctrl">
+        <p>Default Array {{arr}}</p>
+        <p>First 3 Elements Array {{arr | limitTo: 3:0}}</p>
+        <p>Last 3 Elements Array {{arr | limitTo: -3}}</p>
+        <p>3 after 5 Elements Array {{arr | limitTo: 3:6}}</p>
+    </div>
+    <script>
+        myapp= angular.module("myapp", []);
+        myapp.controller("limit_ctrl", function($scope){
+            $scope.arr= [0,1,2,3,4,5,6,7,8,9];
+        });
+    </script>
+</body>
+</html>

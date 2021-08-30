@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+</head>
+<body>
+    <div class="root" ng-app="myapp">
+        <div ng-controller="cube_ctrl">
+            <label for="num">Enter a Number</label> <input type="number" ng-model="num">
+            <button ng-click="cube()">Calculate Cube</button>
+            <p>{{c_num}}</p>
+        </div>
+    </div>
+
+    <script>
+        myapp= angular.module("myapp", []);
+        myapp.factory("CubeFactory", function(){
+            var fact= {};
+            fact.cube= function(n) {
+                return (n*n*n);
+            }
+
+            return(fact);
+        })
+        myapp.controller("cube_ctrl", function($scope, CubeFactory){
+            $scope.num= 0
+            $scope.c_num= 0;
+            $scope.cube= function(){
+                let c= CubeFactory.cube($scope.num);
+                $scope.c_num= c;
+            }
+        });
+    </script>
+</body>
+</html>

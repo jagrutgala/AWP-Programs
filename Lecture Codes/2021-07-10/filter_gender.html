@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+    <style>
+        table, tr, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        td, th {
+            padding: 1rem 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="root" ng-app="myapp">
+        <div ng-controller="gender_ctrl">
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>DB Value</th>
+                    <th>Custom Filter Value</th>
+                </tr>
+
+                <tr ng-repeat="i in gender_data">
+                    <td>{{i.name}}</td>
+                    <td>{{i.gender}}</td>
+                    <td>{{i.gender| cus_filter}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+<script>
+    myapp= angular.module("myapp", []);
+    myapp.filter("cus_filter", function (){
+        return function (g) {
+            let g_= "";
+            if(g == 0){
+                g_= "Unknown";
+            } else if(g == 1){
+                g_= "Male";
+            } else if(g== 2){
+                g_= "Female";
+            }
+            return(g_);
+        }
+    });
+    myapp.controller("gender_ctrl", function($scope){
+        $scope.gender_data= [
+            {"name": "Sumiti", "gender": 2},
+            {"name": "Mike", "gender": 2},
+            {"name": "Rahul", "gender": 0},
+            {"name": "Raunak", "gender": 1},
+            {"name": "Jagrut", "gender": 1},
+        ];
+
+    });
+</script>
+</body>
+</html>

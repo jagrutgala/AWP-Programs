@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+
+    <style>
+        table, tr, th, td {
+            background-color: #21222C;
+            border: 1px solid black;
+            border-collapse: collapse;
+            color: azure;
+            font-size: 2rem;
+        }
+
+        th, td {
+            padding: 1rem 3rem;
+        }
+        .i-name {
+            color: #A4FFFF;
+        }
+        .i-country {
+            color: #FF92DF;
+        }
+    </style>
+</head>
+<body>
+    <div class="root" ng-app="">
+        <div ng-init="names_countries=[
+        {name:'Jagrut',country:'India'},
+        {name:'Kark',country:'USA'},
+        {name:'Fiona',country:'Canada'},
+        ]">
+
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Country</th>
+            </tr>
+
+            <tr ng-repeat="i in names_countries">
+                <td class="i-name">{{i.name}}</td>
+                <td class="i-country">{{i.country}}</td>
+            </tr>
+
+            <tr ng-></tr>
+        </table>
+        </div>
+    </div>
+</body>
+</html>

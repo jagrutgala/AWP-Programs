@@ -1,0 +1,84 @@
+<!--
+p3.3_filter_student_table.html
+Author: Jagrut Gala
+Date: 13-07-2021
+Practical: 3
+Objective: Using angularjs display the student details who are live in pune in table format (using ng-repeat directive ,use array to store data , use filter)
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+
+    <style>
+        table, tr, td,th {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 0.1rem 0.2rem;
+        }
+
+        .tables {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .tables> * {
+            margin: 1rem;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="root" ng-app="myapp">
+        <div ng-controller="student_ctrl">
+            <div class="tables">
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>City</th>
+                    </tr>
+                    <tr ng-repeat="i in stud">
+                        <td>{{i.name}}</td>
+                        <td>{{i.city}}</td>
+                    </tr>
+                </table>
+    
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>City</th>
+                    </tr>
+                    <tr ng-repeat="i in stud | filter: fill">
+                        <td>{{i.name}}</td>
+                        <td>{{i.city}}</td>
+                    </tr>
+                </table>
+            </div>
+            <button type="button" ng-click="apply_filter('pune')">Apply Filter</button>
+            <button type="button" ng-click="apply_filter('')">Remove Filter</button>
+        </div>
+    </div>
+    <script>
+        myapp= angular.module("myapp", []);
+        myapp.controller("student_ctrl", function($scope){
+            $scope.stud = [
+                { name: 'Amit', city: 'pune' },
+                { name: 'Sumit', city: 'pune' },
+                { name: 'Rahul', city: 'mumbai' },
+                { name: 'sachin', city: 'mumbai' },
+                ];
+            $scope.fill= "";
+
+            $scope.apply_filter= function(f){
+                $scope.fill= f;
+            }
+        });
+    </script>
+</body>
+</html>

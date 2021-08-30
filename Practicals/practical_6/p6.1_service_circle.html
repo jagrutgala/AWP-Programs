@@ -1,0 +1,60 @@
+<!--
+p5.4_service_circle.html
+Author: Jagrut Gala
+Date: 10-08-2021
+Practical: 5
+Objective: WAP in angularjs to create custom service to calculate area of circle and circumference of circle.
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+</head>
+<body>
+    <div class="root" ng-app="myapp" ng-controller="circle_ctrl">
+        <section>
+            <label for="radius">Enter Radius: </label> <input type="number" id="radius" step="0.1" ng-model="rad">
+            <button ng-click="area()">Area</button>
+            <button ng-click="circumference()">Circumference</button>
+            <p>{{ans}}</p>
+        </section>
+    </div>
+
+    <script>
+        myapp= angular.module("myapp", []);
+        myapp.factory("Circle_fact", function(){
+            var fact= {};
+            fact.area= function(radius){
+                let a= 3.14* radius* radius;
+                return(a);
+            }
+        return(fact);
+        });
+
+        myapp.service("Circle_ser", function(){
+            this.circumference= function(radius){
+                let c= 2* 3.14*radius;
+                return(c);
+            }
+        });
+
+        myapp.controller("circle_ctrl", function($scope, Circle_fact, Circle_ser){
+            $scope.rad= 1;
+            $scope.ans= "";
+            $scope.area= function(){
+                $scope.ans= "Area of Circle = "+ Circle_fact.area($scope.rad);
+            }
+
+            $scope.circumference= function(){
+                $scope.ans= "Circumference of Circle = "+ Circle_ser.circumference($scope.rad);
+            }
+        });
+    </script>
+</body>
+</html>

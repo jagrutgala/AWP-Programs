@@ -1,0 +1,43 @@
+<!--
+p5.2_src_cycle_images.html
+Author: Jagrut Gala
+Date: 10-08-2021
+Practical: 5
+Objective: WAP in angular js to display random images on every single click of images.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+</head>
+<body>
+    <div class="root" ng-app="myapp">
+        <div ng-controller="img_ctrl">
+            <img src="{{img_src[img_indx]}}" alt="photo" ng-click="change_img()">
+        </div>
+    </div>
+
+    <script>
+        myapp= angular.module("myapp", []);
+        myapp.controller("img_ctrl", function($scope){
+            $scope.img_indx= 0;
+
+            $scope.img_src= [
+                "https://picsum.photos/200/300?random",
+                "https://picsum.photos/200",
+                "https://picsum.photos/id/69/200/300",
+                "https://picsum.photos/200/300?grayscale"
+            ];
+
+            $scope.change_img= function() {
+                $scope.img_indx= ($scope.img_indx+ 1)% $scope.img_src.length;
+            }
+        });
+    </script>
+</body>
+</html>

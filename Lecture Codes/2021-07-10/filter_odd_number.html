@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+    <style>
+        body {
+            font-size: 2rem;
+        }
+        input, button {
+            font-size: inherit;
+        }
+    </style>
+</head>
+<body>
+    <div class="root" ng-app="myapp">
+        <div ng-controller="odd_ctrl">
+            <label for="num">Enter a Number: </label><input type="number" name="num" id="num" ng-model="size">
+            <button ng-click="number_gen(size)">Odd Only</button>
+            <h3>Odd Numbers Only List</h3>
+            <ul>
+                <li ng-repeat="i in numbers| filter: odd">{{i}}</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        myapp= angular.module("myapp", []);
+        myapp.controller("odd_ctrl", function($scope) {
+            $scope.size= 10;
+            $scope.numbers= [1,2,3,4,5,6,7,8,9];
+            $scope.number_gen= function(size) {
+                $scope.numbers= [];
+                for(let i=1; i<= size; i++) {
+                    $scope.numbers.push(i);
+                }
+            }
+            $scope.odd= function(n) {
+                if(n% 2 == 1) {
+                    return n;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

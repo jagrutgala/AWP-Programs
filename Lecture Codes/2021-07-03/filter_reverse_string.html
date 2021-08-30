@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+</head>
+<body>
+    <div class="root" ng-app="myapp" ng-controller="reverse_ctrl">
+        <label for="string">Enter a String</label> <input type="text" ng-model="string">
+        <p>String without Filter: {{string}}</p>
+        <p>String with Filter: {{string| reverse_fil}}</p>
+    </div>
+    <script>
+        myapp= angular.module("myapp", []);
+        myapp.filter("reverse_fil", function(){
+            return function(s) {
+                let new_string= "";
+                for(let i=0; i<s.length; i++){
+                    new_string= s[i]+ new_string;
+                }
+                return(new_string);
+            }
+        });
+        myapp.controller("reverse_ctrl", function($scope){
+            $scope.string= "";
+        });
+    </script>
+</body>
+</html>

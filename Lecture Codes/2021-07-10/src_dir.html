@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+</head>
+<body>
+    <div class="root" ng-app="myapp" ng-controller="img_ctrl">
+        <img ng-src="{{pic}}" alt="Foto" height="500" width="500">
+    </div>
+    <script>
+        myapp= angular.module("myapp", []);
+        myapp.controller("img_ctrl", function($scope){
+            $scope.pic= ".\\imgs\\backiee-16858.jpg"
+        });
+    </script>
+</body>
+</html>

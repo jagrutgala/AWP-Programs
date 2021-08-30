@@ -1,0 +1,69 @@
+<!-- Use service -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+</head>
+<body>
+    <div class="root" ng-app="myapp">
+        <section ng-controller="invoice_ctrl">
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <td><input type="text" name="name" id="name" ng-model="name"></td>
+                </tr>
+                <tr>
+                    <th>Contact</th>
+                    <td><input type="text" name="contact" id="contact" ng-model="contact"></td>
+                </tr>
+                <tr>
+                    <th>Gender</th>
+                    <td><input type="text" name="gender" id="gender" ng-model="gender"></td>
+                </tr>
+
+                <tr>
+                    <th>Item</th>
+                    <td>
+                        <select name="item" id="item" ng-model="item">
+                            <option value="0">T-Shirt</option>
+                            <option value="1">Shirt</option>
+                            <option value="2">Pants</option>
+                            <option value="3">Shoes</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Price</th>
+                    <td><p ng-model="price" ng-bind="items[item]['price']"></p></td>
+                </tr>
+                <tr>
+                    <th>Quantity</th>
+                    <td><input type="number" name="quantity" id="quantity" ng-model="quantity"></td>
+                </tr>
+            </table>
+
+            <button ng-click="total(item, quantity)">Total</button>
+
+            <h2>Total: {{amt | currency: '₹'}}</h2>
+        </section>
+    </div>
+
+    <script>
+        myapp= angular.module("myapp", []);
+        myapp.controller("invoice_ctrl", function($scope){
+            $scope.items= [2,3,1,5];
+            $scope.item= "";
+            $scope.quantity= 1;
+            $scope.amt= 0;
+            $scope.total= function(item, quantity) {
+                $scope.amt= $scope.items[item]* quantity;
+            }
+        });
+    </script>
+</body>
+</html>

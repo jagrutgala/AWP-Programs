@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+
+    <style>
+        table, tr, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <div class="root" ng-app="">
+        <div ng-init="marks= [80, 75, 90, 92]; parents={'father': 'Gemendra', 'mother': 'Bhavana'}">
+            <table>
+                <tr ng-repeat="i in marks">
+                    <td>{{i}}</td>
+                </tr>
+            </table>
+            <br>
+            <table>
+                <tr ng-repeat="i in parents">
+                    <td>{{i}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

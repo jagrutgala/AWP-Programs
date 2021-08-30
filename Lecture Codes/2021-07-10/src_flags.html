@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        tr, th, td {
+            border: 1px solid black;
+            padding: 0.2rem 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="root" ng-app="myapp">
+        <div ng-controller="flags_ctrl">
+            <table>
+                <tr>
+                    <th>Country</th>
+                    <th>Capital</th>
+                    <th>Currency</th>
+                    <th>Flag</th>
+                </tr>
+
+                <tr ng-repeat="i in countries">
+                    <td>{{i.country}}</td>
+                    <td>{{i.capital}}</td>
+                    <td>{{i.currency}}</td>
+                    <td><img ng-src="{{i.flag}}" alt="Flag" height="100" width="200"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+        myapp= angular.module("myapp", []);
+        myapp.controller("flags_ctrl", function($scope){
+            $scope.countries= [
+                {country: "USA", capital: "Washington, D.C.", currency: "$", flag: "https://bit.ly/3rxSDSV"},
+                {country: "Russia", capital: "Moscow", currency: "₽", flag: "https://bit.ly/3eUZbpz"},
+                {country: "India", capital: "New Delhi", currency: "₹", flag: "https://bit.ly/3y4ZTIg"},
+                {country: "Germany", capital: "Berlin", currency: "DEM", flag: "https://bit.ly/3eY6zR8"},
+                {country: "Canada", capital: "Ottawa", currency: "ca$", flag: "https://bit.ly/3i0rq8e"},
+                {country: "Australia", capital: "Canberra", currency: "AUD$", flag: "https://bit.ly/3eYiBd5"}
+            ];
+        });
+    </script>
+</body>
+</html>

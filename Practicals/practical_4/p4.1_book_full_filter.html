@@ -1,0 +1,82 @@
+<!--
+p4.1_book_full_filter.html
+Author: Jagrut Gala
+Date: 13-07-2021
+Practical: 4
+Objective: WAP in angular js to display table with the column name id , title, author and price. Initialize the table data in js file . Create a dropdown menu with the option any, Id , title, author and price and a serach input box. On selection of the dropdown and value entered in the input search box it should display the data into the table.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+
+    <style>
+        tr, td, th {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        td, th {
+            padding: 0.2rem 0.4rem;
+        }
+        table {
+            box-sizing: border-box;
+            width: max-content;
+            margin: 1rem 0rem;
+        }
+        .books {
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="root" ng-app="myapp">
+        <div ng-controller="book_ctrl">
+            <div class="tools">
+                <select name="search_select" id="search_select" ng-model="searchKeyword">
+                    <option value="$">Any</option>
+                    <option value="id">ID</option>
+                    <option value="title">Title</option>
+                    <option value="price">Price</option>
+                </select>
+
+                <input type="text" name="search_text" id="search_text" ng-model="search[searchKeyword]">
+            </div>
+
+            <div class="books">
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Price</th>
+                    </tr>
+
+                    <tr ng-repeat="i in bookList | filter: search">
+                        <td>{{i.id}}</td>
+                        <td>{{i.title}}</td>
+                        <td>{{i.price}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script>
+        myapp= angular.module("myapp", []);
+        myapp.controller("book_ctrl", function($scope){
+            $scope.search= {}
+            $scope.searchKeyword= "$";
+            $scope.bookList = [
+                    { "id": 1, "title": "Hobbit", "author": "Aman", "price": 700 },
+                    { "id": 2, "title": "Lord of the rings", "author": "Sameer", "price": 1000 },
+                    { "id": 3, "title": "Harry Porter", "author": "Anuj", "price": 650 },
+                    { "id": 4, "title": "The little prince", "author": "Jatin", "price": 870 },
+                    { "id": 5, "title": "Angels and Demons", "author": "Shivam", "price": 890 }
+            ];
+        });
+    </script>
+</body>
+</html>

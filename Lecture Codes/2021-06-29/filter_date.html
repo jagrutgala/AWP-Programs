@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+</head>
+
+<body>
+    <div class="root" ng-app="myapp" ng-controller="date_ctrl">
+        <p>Today is <span>{{date}}</span></p>
+        <p>Today is <span>{{date| date:'dd.MM.y'}}</span></p>
+        <p>Today is <span>{{date| date:'fullDate'}}</span></p>
+        <p>Today is <span>{{date| date:'MMMM-d-y'}}</span></p>
+    </div>
+    <script>
+        var myapp= angular.module("myapp", []);
+        myapp.controller("date_ctrl", function ($scope) {
+            $scope.date= new Date();
+        });
+    </script>
+</body>
+
+</html>

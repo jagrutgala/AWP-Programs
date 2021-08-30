@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+</head>
+<body>
+    <div class="root" ng-app="myapp">
+        <div ng-controller="fil_ctrl">
+            <p>{{fname+ ' '+  lname}}</p>
+            <p>Upper Case: {{(fname | uppercase)+ ' '+ (lname | uppercase)}}</p>
+            <p>Lower Case: {{(fname | lowercase)+ ' '+ (lname | lowercase)}}</p>
+        </div>
+    </div>
+    <script>
+        var myapp= angular.module("myapp", []);
+        myapp.controller("fil_ctrl", function($scope){
+            $scope.fname= "Jagrut";
+            $scope.lname= "Gala";
+        });
+    </script>
+</body>
+</html>

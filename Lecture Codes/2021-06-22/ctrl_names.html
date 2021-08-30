@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+</head>
+<body>
+    <div class="root" ng-app="myapp">
+        <div ng-controller="name_ctrl">
+            <label for="fname">First Name: </label> <input type="text" id="fname" ng-model="fname">
+            <label for="lname">Last Name: </label> <input type="text" id="lname" ng-model="lname">
+            <p>{{fname+ ' '+ lname}}</p>
+        </div>
+    </div>
+
+    <script>
+        var myapp= angular.module("myapp", []);
+        myapp.controller("name_ctrl", function($scope){
+            // $scope.fname;
+            // $scope.lname;
+        });
+    </script>
+</body>
+</html>

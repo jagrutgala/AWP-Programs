@@ -1,0 +1,65 @@
+<!--
+p2.1_model_bind_disable.html
+Author: Jagrut Gala
+Date: 06-07-2021
+Practical: 2
+Objective: Write an AngularJs script for the addition of two numbers using ng-init,ng-mode, and ng-bind, 
+    and also demonstrate ng-show,ng-disabled,ng-click directives on the button component.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="root" ng-app="myapp">
+        <div ng-controller="disable_ctrl">
+            <section>
+                <h1>ng-model</h1>
+                <label for="num1">Number1</label><input type="number" id="num1" ng-model="num1">
+                <label for="num2">Number2</label><input type="number" id="num2" ng-model="num2">
+                <p>Result: <span>{{num1+ num2}}</span></p>
+            </section>
+            <section>
+                <h1>ng-bind</h1>
+                <label for="num3">Number3</label><input type="number" id="num3" ng-model="num3">
+                <label for="num4">Number4</label><input type="number" id="num4" ng-model="num4">
+                <p>Result: <span ng-bind="click"></span></p>
+            </section>
+            <section>
+                <h1>ng-show</h1>
+                <input type="checkbox" id="dis" ng-model="dis"> <label for="dis">Undisable Button</label>
+                <button type="button" ng-disabled="!dis" ng-click="add(num3, num4)">Add</button>
+            </section>
+
+            <section>
+                <button ng-click="visible()">Show</button>
+                <h1 ng-show="vis">Welcome to Angular</h1>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        myapp= angular.module("myapp", []);
+        myapp.controller("disable_ctrl", function($scope){
+            $scope.vis= false;
+            $scope.add= function(n1, n2){
+                $scope.click= n1+ n2;
+            }
+
+            $scope.visible= function (){
+                $scope.vis= !($scope.vis);
+            }
+        });
+    </script>
+</body>
+</html>

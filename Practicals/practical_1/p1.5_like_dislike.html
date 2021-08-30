@@ -1,0 +1,81 @@
+<!--
+p1.5_like_dislike.html
+Author: Jagrut Gala
+Date: 29-06-2021
+Practical: 1
+Objective: WAP in angular js to display a table of sports with the column sports name, 
+    the total number of likes and total number of dislike and like and dislike button on click of like button its should increment the number of like or dislike. 
+    Initialize the table data in the js file.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+    <style>
+        table, tr, td, th {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        
+        td, th {
+            padding: 1rem 2rem;
+        }
+        button {
+            padding: 0.5rem 1.5rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="root" ng-app="myapp">
+        <div ng-controller="sport_ctrl">
+            <table>
+                <tr>
+                    <th>Sport</th>
+                    <th>Likes</th>
+                    <th>Dislikes</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr ng-repeat="i in sports">
+                    <td>{{i.name}}</td>
+                    <td>{{i.like}}</td>
+                    <td>{{i.dislike}}</td>
+                    <td><button ng-click="like(i)">Like</button></td>
+                    <td><button ng-click="dislike(i)">Disklike</button></td>
+                </tr>
+            </table>
+    
+    </div>
+    </div>
+
+    <script>
+        var myapp= angular.module("myapp", []);
+        myapp.controller("sport_ctrl", function($scope){
+
+            $scope.sports= [
+        {name: 'Cricket', like: 0, dislike: 0},
+        {name: 'Football', like: 0, dislike: 0},
+        {name: 'Hockey', like: 0, dislike: 0},
+        {name: 'Tennis', like: 0, dislike: 0},
+        {name: 'E-Sport', like: 0, dislike: 0},
+        ];
+
+        $scope.like= function(sport){
+            // console.log('Like');
+            sport.like++;
+        }
+
+        $scope.dislike= function(sport) {
+            // console.log('Dislike');
+            sport.dislike++;
+        }
+        });
+    </script>
+</body>
+</html>

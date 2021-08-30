@@ -1,0 +1,55 @@
+*****Practical 1 [29 June 2021]*****
+
+Q1] Write a program in angular js to initialize the number and calculate the cube of the number
+Q2] Write a program in angular js to initialize the array with object . The Object consist of venue and country.
+    Display All the value of the array in the unordered list .
+Q3] Write a program in angular js to accept first name from user and display welcome username using ng-bind.
+Q4] Demonstrate the use of ng-show and ng-hide directive.
+Q5] Write a program in angular js to display table of sports with the column sports name,
+    total number of like and total number of dislike and like and dislike button on click of like button 
+    its should increment the number of like or dislike. Initialize the table data in js file
+
+
+*****Practical 2 [6 July 2021]*****
+Q1] Write an angularjs script  for addition of two numbers using ng-init,ng-mode and ng-bind. 
+    and also demonstrate ng-show,ng-disabled,ng-click directives on button component.
+
+
+
+*****Practical 3 [ 2021]*****
+Q1] Write a program in angular js to accept first name, salary per day and total number of working days , 
+    display first name with upper case filter and the total salary(salary per day*total no. of working days) 
+    use currency filter (don’t use ng-click)
+Q2] Write a program in angular js to display the programming language in the ascending order and descending order using filter . 
+    initialize the data in js file.
+Q3] using angularjs display the student details who are live in pune in table format 
+    (using ng-repeat directive ,use array to store
+    data , use filter)
+    $scope.stud = [
+		{ name: 'Amit', city: 'pune' },
+		{ name: 'Sumit', city: 'pune' },
+		{ name: 'Rahul', city: 'mumbai' },
+		{ name: 'sachin', city: 'mumbai' },
+		];
+
+
+*****Practical 4 [13 July 2021]*****
+Q1] Write a program in angular js to display table with the column name id , title, author and price . 
+    initialize the table data in js file . Create a dropdown menu with the option any, Id , title, author and price and a serach input box . 
+    on selection of the dropdown and value entered in the input search box it should display the data into the table.
+    $scope.bookList = [
+                    { "id": 1, "title": "Hobbit", "author": "Aman", "price": 700 },
+                    { "id": 2, "title": "Lord of the rings", "author": "Sameer", "price": 1000 },
+                    { "id": 3, "title": "Harry Porter", "author": "Anuj", "price": 650 },
+                    { "id": 4, "title": "The little prince", "author": "Jatin", "price": 870 },
+                    { "id": 5, "title": "Angels and Demons", "author": "Shivam", "price": 890 }
+            ];
+Q2] Write a program in AnularJS to initialize the data of employee(id,name,and salary) atleast 5 records. and use imt to filter to display first 3 record
+*limit to
+Q3] Demonstration of limit to filter using string and array
+Q4] Write a program in AngularJS to initialize the data of employee.create custom filter to display record of emp whoese salary > 5000. 
+
+
+*****Practical 5 [20 July 2021]*****
+Q1] Write a program in angular js to Use of ng-src. Create a food Menu List using ng-src. 
+    Create table which display food image, Menu Name and price.Display atleast 5 Menu

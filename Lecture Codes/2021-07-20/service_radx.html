@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+</head>
+<body>
+    <div class="root" ng-app="myapp">
+        <div ng-controller="rad_ctrl">
+            <section>
+                <label for="num">Enter Number Base: </label>
+                <input type="number" id="num" ng-model="num">
+            </section>
+            <section>
+                <label for="rad_num">Enter Number Base: </label>
+                <input type="number" id="rad_num" ng-model="rad_num">
+            </section>
+            <!-- <button ng-click="calNum()">Calculate Number</button> -->
+            <p>{{num}} in {{rad_num}} base = {{calNum()}}</p>
+        </div>
+    </div>
+
+    <script>
+        myapp= angular.module("myapp", []);
+        myapp.service("RadCal", function(){
+            this.rad= function(num, base) {
+                return num.toString(base);
+            }
+        });
+        myapp.controller("rad_ctrl", function($scope, RadCal){
+            $scope.num= 0;
+            $scope.rad_num= 10;
+            $scope.calNum= function(){
+                return RadCal.rad($scope.num, $scope.rad_num)
+            };
+
+        });
+    </script>
+</body>
+</html>

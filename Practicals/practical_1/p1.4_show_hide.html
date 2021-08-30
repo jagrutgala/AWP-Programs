@@ -1,0 +1,31 @@
+<!--
+p1.4_show_hide.html
+Author: Jagrut Gala
+Date: 29-06-2021
+Practical: 1
+Objective: Demonstrate the use of ng-show and ng-hide directives.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+</head>
+<body>
+    <div class="root" ng-app="">
+        <div>
+            <label for="show-h">Show HTML</label> <input type="checkbox" ng-model="show_html">
+            <h1 ng-show="show_html">Welcome</h1>
+        </div>
+
+        <div>
+            <label for="show-h">Hide HTML</label> <input type="checkbox" ng-model="hide_html">
+            <h1 ng-hide="hide_html">Welcome</h1>
+        </div>
+    </div>
+</body>
+</html>

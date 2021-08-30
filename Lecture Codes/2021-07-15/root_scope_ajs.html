@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+    <style>
+        body {
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="root" ng-app="myapp">
+        <h1>$rootScope Example</h1>
+        <section ng-controller="ctrl_1">
+            <p>{{name}}</p>
+            <p>{{msg}}</p>
+        </section>
+        <section ng-controller="ctrl_2">
+            <p>{{name}}</p>
+            <p>{{msg}}</p>
+        </section>
+        <section ng-controller="ctrl_3">
+            <p>{{name}}</p>
+            <p>{{msg}}</p>
+        </section>
+    </div>
+    <script>
+        myapp= angular.module("myapp", []);
+        myapp.controller("ctrl_1", function($scope, $rootScope){
+            $scope.name= "Jagrut is awsome";
+            $rootScope.msg= "Hatim is absent";
+        });
+
+        myapp.controller("ctrl_2", function($scope){
+            $scope.name= "Raunak nashedi";
+        });
+
+        myapp.controller("ctrl_3", function($scope){
+            $scope.name= "Dhruvit is naughty boi";
+        });
+    </script>
+</body>
+</html>

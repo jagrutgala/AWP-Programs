@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="a1_todo_main.css">
+    <script src="../angular.min.js"></script>
+    <script src="../angular-route.min.js"></script> 
+    <script src="a1_todo_app.js" defer></script>
+    <title>ToDo App</title>
+</head>
+<body>
+    <div class="root" ng-app="myapp">
+        <div class="navigation"></div>
+
+        <header class="hero">
+                <h1 class="title">Welcome To ToDo List</h1>
+        </header>
+
+        <div class="content" ng-controller="content_ctrl">
+            <section class="tools">
+                <input class="input text" type="text" ng-model="t_name">
+                <button class="btn" ng-click="addTask()">Add Task</button>
+            </section>
+
+            <section>
+                <ul class="list">
+                    <li class="task" ng-repeat="i in task_list track by $index">
+                        <label for="{{i}}"><p class="name text">{{i}}</p></label>
+                        <button class="check" id="{{i}}" ng-click="completeTask(task_list, i)">Complete</button>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+</body>
+</html>

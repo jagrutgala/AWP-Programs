@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <title>Route Example</title>
+    <script src="../angular.min.js"></script>
+    <script src="../angular-route.min.js"></script>
+</head>
+
+<body>
+    <div ng-app="myapp" ng-controller='myCtrl'>
+        <ul>
+            <li><a href="#!/">Home</a></li>
+            <li><a href="#!/page1">Page1</a></li>
+            <li><a href="#!/page2">Page2</a></li>
+
+        </ul>
+
+        <div ng-view></div>
+    </div>
+    <script>
+        var myapp = angular.module('myapp', ['ngRoute'])
+        myapp.controller('myCtrl', function ($scope) {
+            $scope.title = "Route Example" //uncomment only if error
+        })
+        myapp.config(['$routeProvider', function ($routeProvider) {
+            $routeProvider
+                .when('/page1', {
+                    template: '<h1>This is Page1</h1>'
+                })
+                .when('/page2', {
+                    template: '<h1>This is Page2</h1>'
+                })
+                .otherwise({
+                    redirectTo: '/'
+                })
+        }])
+    </script>
+</body>
+
+</html>

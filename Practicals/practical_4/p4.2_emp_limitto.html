@@ -1,0 +1,60 @@
+<!--
+p4.2_emp_limitto.html
+Author: Jagrut Gala
+Date: 20-07-2021
+Practical: 4
+Objective: WAP in anularjs to initialize the data of employee(id,name,and salary) atleast 5 records. And use limit to filter to display first 3 record
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+    <style>
+        table, tr, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 0.5rem 1rem;
+        }
+        table {
+            margin: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="root" ng-app="myapp" ng-controller="emp_ctrl">
+        <label for="srows">No of Rows shown</label> <input type="number" name="srows" id="srows" ng-model="total">
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Salary</th>
+            </tr>
+
+            <tr ng-repeat="i in employees| limitTo: total">
+                <td>{{i.id}}</td>
+                <td>{{i.name}}</td>
+                <td>{{i.salary}}</td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        myapp= angular.module("myapp", []);
+        myapp.controller("emp_ctrl", function($scope){
+            $scope.employees= [
+                {id: 1, name: "Lorem", salary: 20000},
+                {id: 2, name: "Ipsum", salary: 22000},
+                {id: 3, name: "Dolor ", salary: 25000},
+                {id: 4, name: "Amet", salary: 30000},
+                {id: 5, name: "Consectetur", salary: 15000},
+                {id: 6, name: "Lacus", salary: 35000},
+                {id: 7, name: "Metus", salary: 62000}
+            ];
+        });
+    </script>
+</body>
+</html>

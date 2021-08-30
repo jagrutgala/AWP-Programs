@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+    <script src="select_lang.js"></script>
+</head>
+<body>
+    <div class="root" ng-app="myapp">
+        <div ng-controller="sLang">
+            <label for="lang_name">Enter Your Language:</label> <input type="text" ng-model="custom_lang"> <br><br>
+            <button ng-click="php()">PHP</button> <button ng-click="java()">Java</button> <button ng-click="custom(custom_lang)">Custom</button>
+            <p>You have selected: <span>{{msg}}</span></p>
+        </div>
+    </div>
+</body>
+</html>

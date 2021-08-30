@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+</head>
+<body>
+    <div class="root" ng-app="myapp">
+        <div class="cal" ng-controller="calculator_ctrl">
+            <span>
+                <label for="num1">Num1: </label> <input type="number" ng-model="num1", id="num1">
+            </span>
+            <span>
+                <label for="num2">Num2: </label> <input type="number" ng-model="num2", id="num2">
+            </span>
+            <span>
+            <label for="op">Operation: </label>
+            <select name="op" id="op" ng-model="op">
+                <option value="plus">plus</option>
+                <option value="minus">minus</option>
+                <option value="multi">multi</option>
+                <option value="div">div</option>
+            </select>
+            </span>
+            <!-- <button ng-click="calculate()">Calculate</button> -->
+            <p>Answer: {{calculate()}}</p>
+
+        </div>
+    </div>
+
+    <script>
+        var myapp= angular.module("myapp", []);
+        myapp.controller("calculator_ctrl", function($scope){
+            $scope.ans= "";
+            $scope.calculate= function(){
+                let num1= $scope.num1;
+                let num2= $scope.num2;
+                let op= $scope.op;
+                if(op == "plus"){
+                    $scope.ans= num1+ num2;
+                } else if (op == "minus") {
+                    $scope.ans= num1- num2;
+                } else if (op == "multi") {
+                    $scope.ans= num1* num2;
+                } else if (op == "div") {
+                    $scope.ans= num1/ num2;
+                }
+                return($scope.ans);
+
+            }
+        });
+    </script>
+</body>
+</html>

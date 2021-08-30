@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+    <style>
+        img {
+            height: 300px;
+            width: 500px;
+            padding: 1rem;
+            border: 5px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="root" ng-app="myapp">
+        <div ng-controller="chg_img_ctrl">
+            <img ng-src="{{img_src[img_num]}}" alt="Foto"> <br>
+            <button ng-click="change_img()">Next</button>
+        </div>
+    </div>
+    <script>
+        myapp= angular.module("myapp", []);
+        myapp.controller("chg_img_ctrl", function($scope){
+            $scope.img_num= 0;
+            $scope.img_src= [
+                "https://bit.ly/3rxSDSV",
+                "https://bit.ly/3eUZbpz",
+                "https://bit.ly/3y4ZTIg",
+                "https://bit.ly/3eY6zR8",
+                "https://bit.ly/3i0rq8e",
+                "https://bit.ly/3eYiBd5",
+            ];
+            $scope.change_img= function() {
+                $scope.img_num= ($scope.img_num+1) % $scope.img_src.length;
+            }
+        });
+    </script>
+</body>
+</html>

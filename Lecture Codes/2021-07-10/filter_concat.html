@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+</head>
+<body>
+    <div class="root" ng-app="myapp">
+        <div ng-controller="concat_ctrl">
+            <label for="text1">Enter String: </label> <input type="text" name="text1" id="text1"ng-model="str1"> <br><br>
+            <label for="text2">Enter String: </label> <input type="text" name="text2" id="text2"ng-model="str2">
+            <p>You entered: {{str1| contact_filter: str2}}</p>
+        </div>
+    </div>
+    <script>
+        myapp= angular.module("myapp", []);
+        myapp.filter("contact_filter", function() {
+            return function(str1, str2= ""){
+                let str= str1+ " "+ str2;
+                return str;
+            }
+        });
+        myapp.controller("concat_ctrl", function($scope){
+            $scope.str1= "";
+            $scope.str2= "";
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!--
+p4.4_emp_salary.html
+Author: Jagrut Gala
+Date: 20-07-2021
+Practical: 4
+Objective: WAP in angularjs to initialize the data of employees. Create a custom filter to display a record of emp whose salary >5000.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+    <style>
+        table {
+            margin: 1rem;
+            border-collapse: collapse;
+        }
+        tr, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 0.5rem 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="root" ng-app="myapp" ng-controller="sal_ctrl">
+        <label for="sal">Salary</label> <input type="number" name="sal" id="sal" ng-model="sal_limit">
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Salary</th>
+            </tr>
+
+            <tr ng-repeat="i in employees| sal_filter: sal_limit">
+                <td>{{i.id}}</td>
+                <td>{{i.name}}</td>
+                <td>{{i.salary}}</td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        myapp= angular.module("myapp", []);
+        myapp.filter("sal_filter", function() {
+            return function(sal, limit= 5000) {
+                let new_sal= new Array();
+                if(limit== null){
+                    return sal;
+                }
+                for(let i=0; i<sal.length; i++){
+                    if(sal[i].salary > limit) {
+                        new_sal.push(sal[i]);
+                    }
+                }
+                return new_sal;
+            }
+        });
+        myapp.controller("sal_ctrl", function($scope){
+            $scope.employees= [
+                {id: 1, name: "Lorem", salary: 1579},
+                {id: 2, name: "Ipsum", salary: 7312},
+                {id: 3, name: "Dolor ", salary: 1384},
+                {id: 4, name: "Amet", salary: 9877},
+                {id: 5, name: "Consectetur", salary: 3040},
+                {id: 6, name: "Lacus", salary: 4484},
+                {id: 7, name: "Metus", salary: 6043}
+            ];
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!--
+p1.2_venue_country.html
+Author: Jagrut Gala
+Date: 29-06-2021
+Practical: 1
+Objective: WAP in angular js to initialize the array with the object. The Object consists of venue and country. Display All the values of the array in the unordered list.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+</head>
+<body>
+    <div class="root" ng-app="">
+        <div ng-init="places_countries=[
+        {venue:'Mulund',country:'India'},
+        {venue:'New York',country:'USA'},
+        {venue:'Toronta',country:'Canada'},
+        ]">
+
+        <ul>
+            <li ng-repeat="i in places_countries">
+                {{i.venue+ ' is from '+ i.country}}
+            </li>
+        </ul>
+        </div>
+    </div>
+</body>
+</html>

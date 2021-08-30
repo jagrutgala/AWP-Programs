@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+    <style>
+        table, tr, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 0.5rem 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="root" ng-app="myapp">
+        <table ng-controller="rollcall_table">
+            <tr>
+                <th>Name</th>
+                <th>Roll No</th>
+            </tr>
+            <tr ng-repeat= "x in rollcall">
+                <td>{{x.names}}</td>
+                <td>{{x.roll}}</td>
+            </tr>
+        </table>
+    </div>
+    <script src=.\ctrl_table.js></script>
+
+</body>
+</html>

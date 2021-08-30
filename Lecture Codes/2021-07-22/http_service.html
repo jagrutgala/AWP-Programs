@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+</head>
+<body>
+    <div class="root" ng-app="myapp">
+        <section ng-controller="http_ctrl">
+            <h1>$http service has requested data from server</h1>
+            <section>
+                <p>header: {{http_res}}</p>
+                <p>status: {{status}}</p>
+                <p>statusText: {{statusText}}</p>
+            </section>
+        </section>
+    </div>
+
+<script>
+    myapp= angular.module("myapp", []);
+    myapp.controller("http_ctrl", function($scope, $http){
+        $scope.http_res= "";
+        $scope.status= "";
+        $scope.statusText= "";
+        $http({
+            method: "GET",
+            url: "sample.html"
+        }).then(
+            function(response) {
+                $scope.http_res= response.headers();
+                $scope.status= response.status;
+                $scope.statusText= response.statusText;
+            },
+            function(response) {
+                $scope.status= response.status;
+                $scope.statusText= response.statusText;
+            }
+        );
+    });
+</script>
+</body>
+</html>

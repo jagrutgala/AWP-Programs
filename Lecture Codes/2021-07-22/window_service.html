@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+</head>
+<body>
+    <div class="root" ng-app="myapp">
+        <section ng-controller="window_ctrl">
+            <button ng-click="alert_me()">Alert Me!</button>
+            <button ng-click="prompt_me()">Prompt Me!</button>
+        </section>
+    </div>
+
+    <script type="text/javascript">
+        myapp= angular.module("myapp", []);
+        myapp.controller("window_ctrl", function($scope, $window) {
+            $scope.alert_me= function (name= "Alert") {
+                $window.alert("This is "+ name+ " >:(");
+            }
+
+            $scope.prompt_me= function () {
+                let name= $window.prompt("Enter Name: ");
+                $scope.alert_me(name);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!--
+p5.3.1_student_table.html
+Author: Jagrut Gala
+Date: 10-08-2021
+Practical: 5
+-->
+
+<div>
+    <label for="name">Enter Name:</label> <input type="text" ng-model="name">
+    <br>
+    
+    <table>
+        <tr>
+            <td><label for="id">Enter ID:</label></td>
+            <td><input type="number" id="id" ng-model="id"></td>
+        </tr>
+        <tr>
+            <td><label for="name">Enter Name:</label></td>
+            <td><input type="text" id="name" ng-model="name"></td>
+        </tr>
+        <tr>
+            <td>{{id}}</td>
+            <td>{{name}}</td>
+        </tr>
+    </table>
+</div>

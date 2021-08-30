@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+</head>
+<body>
+    <div class="root" ng-app="myapp">
+        <section ng-controller="timeout_ctrl">
+            <h1>{{text}}</h1>
+            <button ng-click="timeoutChange('You Clicked The Button')">Change</button>
+        </section>
+    </div>
+
+    <script type="text/javascript">
+        myapp= angular.module("myapp", []);
+        myapp.controller("timeout_ctrl", function($scope, $timeout) {
+            $scope.text= "Click The Button";
+            $scope.changeText= function(t= "Hello World") {
+                $scope.text= t;
+            }
+            $scope.timeoutChange= function(t) {
+                $timeout(() => {
+                    $scope.changeText(t);
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>

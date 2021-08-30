@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+</head>
+<body>
+    <div class="root" ng-app="myapp">
+        <div ng-controller="square_ctrl">
+            <label for="num">Enter a Number</label> <input type="number" name="num" id="num" min="0" ng-model="s_num">
+            <p>Square: {{s_num| square}}</p>
+        </div>
+    </div>
+
+    <script>
+        myapp= angular.module("myapp", []);
+        myapp.filter("square", function(){
+            return function(n){
+                return (n*n);
+            }
+        });
+        myapp.controller("square_ctrl", function($scope){
+            $scope.s_num= 1;
+        });
+    </script>
+</body>
+</html>

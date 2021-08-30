@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+</head>
+<body>
+    <div class="root" ng-app="myapp">
+        <div ng-controller="gst_ctrl">
+            <section>
+                <label for="amt">Enter Price</label>
+                <input type="number" id="amt" ng-model="amt">
+            </section>
+            <section>
+                <label for="gst">Enter GST %</label>
+                <input type="number" id="gst" ng-model="gst">
+            </section>
+            <button ng-click="calGST()">Total GST</button>
+            <button ng-click="calAmt()">Total Amt</button>
+
+            <p>Total GST: {{total_gst| currency: '₹'}}</p>
+            <p>Total AMT: {{total_amt| currency: '₹'}}</p>
+        </div>
+    </div>
+
+    <script>
+        myapp= angular.module("myapp", []);
+        myapp.factory("GstFactory", function(){
+            var fact= {};
+            fact.calGST= function(amt, gst){
+                let g= (gst* amt)/ 100;
+                return(g);
+            }
+            return(fact);
+        });
+        myapp.controller("gst_ctrl", function($scope, GstFactory){
+            $scope.total_gst= 0;
+            $scope.total_amt= 0;
+            $scope.gst= 5;
+            $scope.amt= 1000;
+
+            $scope.calGST= function(){
+                $scope.total_gst= GstFactory.calGST($scope.amt, $scope.gst);
+            }
+            $scope.calAmt= function() {
+                $scope.total_gst= GstFactory.calGST($scope.amt, $scope.gst);
+                $scope.total_amt= $scope.amt+ $scope.total_gst;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+    <style>
+        .ad-table {
+            margin: 1rem;
+        }
+        table {
+            border-collapse: collapse;
+        }
+
+        tr, th, td {
+            border: 1px solid black;
+            padding: 0.2rem 0.5rem;
+        }
+
+        select {
+            margin-right: 1rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="root" ng-app="myapp">
+        <div class="ad-table" ng-controller="order_ctrl">
+            <label for="column">Sort By Column:</label>
+            <select name="column" id="column" ng-model="order_col">
+                <option value="name" selected>Name</option>
+                <option value="dob">Date Of Birth</option>
+                <option value="salary">Salary</option>
+            </select>
+
+            <label for="order">Sort By Order:</label>
+            <select name="order" id="order" ng-model="order_ad">
+                <option value="+" selected>Acsend</option>
+                <option value="-">Decend</option>
+            </select>
+
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Date of Birth</th>
+                    <th>Gender</th>
+                    <th>Salary</th>
+                </tr>
+
+                <tr ng-repeat="i in data | orderBy: order_ad+ order_col">
+                    <th>{{i.name}}</th>
+                    <th>{{i.dob}}</th>
+                    <th>{{i.gender}}</th>
+                    <th>{{i.salary | currency: "₹"}}</th>
+                </tr>
+            </table>
+            <p>Order var= {{order_ad+ order_col}}</p>
+        </div>
+    </div>
+
+    <script>
+        var myapp= angular.module("myapp", []);
+        myapp.controller("order_ctrl", function($scope){
+            $scope.data= [
+                {name: "A", dob: "31-8-2001", gender: "Male", salary: 35000},
+                {name: "B", dob: "31-7-2001", gender: "Male", salary: 25000},
+                {name: "C", dob: "31-6-2001", gender: "Male", salary: 45000},
+                {name: "D", dob: "31-5-2001", gender: "Male", salary: 15000},
+            ];
+            $scope.order_col= "name";
+            $scope.order_ad= "+";
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin: 1rem;
+        }
+
+        tr, td, th {
+            border: 1px solid black;
+            padding: 0.2rem 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="root" ng-app="myapp" ng-controller="order_ctrl">
+        <section>
+            <h1>Ascending Order</h1>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>States</th>
+                <th>GDP</th>
+            </tr>
+            <tr ng-repeat="i in countries| orderBy: '+gdp'">
+                <td>{{i.name}}</td>
+                <td>{{i.state}}</td>
+                <td>{{i.gdp}}</td>
+            </tr>
+        </table>
+        </section>
+
+        <section>
+            <h1>Descending Order</h1>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>States</th>
+                    <th>GDP</th>
+                </tr>
+                <tr ng-repeat="i in countries| orderBy: '-gdp'">
+                    <td>{{i.name}}</td>
+                    <td>{{i.state}}</td>
+                    <td>{{i.gdp}}</td>
+                </tr>
+            </table>
+        </section>
+    </div>
+
+    <script>
+        myapp= angular.module("myapp", []);
+        myapp.controller("order_ctrl", function($scope){
+            $scope.countries= [
+                {name: "America",state: 21, gdp: 10},
+                {name: "Russia", state: 25, gdp: 15},
+                {name: "India", state: 19, gdp: 9},
+                {name: "Canada", state: 30, gdp: 13},
+                {name: "Germany", state: 38, gdp: 14},
+                {name: "France", state:27, gdp: 26},
+                {name: "Korea", state: 26, gdp: 12}
+            ];
+        });
+    </script>
+</body>
+</html>

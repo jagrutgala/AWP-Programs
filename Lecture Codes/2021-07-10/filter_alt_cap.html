@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+    <style>
+        .cus_filter_ul {
+            display: flex;
+            gap: 5rem;
+            font-size: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="root" ng-app="myapp">
+        <div class="cus_filter_ul" ng-controller="cap_small_ctrl">
+            <ul>
+                <li ng-repeat="i in name_data">
+                    {{i}}
+                </li>
+            </ul>
+
+            <div ng-controller="cap_small_ctrl">
+                <ul>
+                    <li ng-repeat="i in name_data">
+                        {{i| small_cap_fil}}
+                    </li>
+                </ul>
+        </div>
+    </div>
+<script>
+    myapp= angular.module("myapp", []);
+    myapp.filter("small_cap_fil", function(){
+        return function (name) {
+            let NaMe= "";
+            for(let i=0; i<name.length; i++){
+                if(i% 2== 0){
+                    NaMe= NaMe.concat(name.charAt(i).toUpperCase());
+                } else {
+                    NaMe= NaMe.concat(name.charAt(i).toLowerCase());
+                }
+            }
+            return(NaMe);
+        }
+    });
+    myapp.controller("cap_small_ctrl", function($scope){
+        $scope.name_data= ["Sumiti","Mike","Rahul","Raunak","Jagrut"];
+    });
+</script>
+</body>
+</html>

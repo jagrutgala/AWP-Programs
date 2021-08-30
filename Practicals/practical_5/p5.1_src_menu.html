@@ -1,0 +1,68 @@
+<!--
+p5.1_src_menu.html
+Author: Jagrut Gala
+Date: 20-07-2021
+Practical: 5
+Objective: WAP in angular js to Use of ng-src. Create a food Menu List using ng-src. Create a table which displays food image, Menu Name and price.Display at least 5 Menu.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+    <style>
+        img {
+            height: 100px;
+            width: 100px;
+        }
+
+        table, tr, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 0.5rem 1rem;
+        }
+        table {
+            width: 95%;
+            text-align: center;
+            margin: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="root" ng-app="myapp" ng-controller="menu_ctrl">
+        <table>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Price(₹)</th>
+            </tr>
+            <tr ng-repeat="i in menu">
+                <td><img ng-src={{i.src}} alt="Food"></td>
+                <td>{{i.name}}</td>
+                <td>{{i.price | currency: '₹'}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        myapp= angular.module("myapp", []);
+        myapp.controller("menu_ctrl", function($scope){
+            $scope.menu= [
+                {name: "Apple", src: "https://bit.ly/3eDCo1s", price: 712},
+                {name: "Orange", src: "https://bit.ly/3rlwO8U", price: 572},
+                {name: "Banana", src: "https://bit.ly/3zj1SZA", price: 831},
+                {name: "Strawberry", src: "https://bit.ly/3hSl62I", price: 457},
+                {name: "Kiwi", src: "https://bit.ly/36RSYGg", price: 591},
+                {name: "Water Melom", src: "https://bit.ly/3hQscEy", price: 991},
+                {name: "Papaya", src: "https://bit.ly/3y4yjL6", price: 700},
+                {name: "Cherry", src: "https://bit.ly/3rnKLTV", price: 469},
+                {name: "PineApple", src: "https://bit.ly/3Bnt2QY", price: 556},
+            ];
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!--
+p4.3_string_limito.html
+Author: Jagrut Gala
+Date: 20-07-2021
+Practical: 4
+Objective: Demonstration of limit to filter using string and array.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+</head>
+<body>
+    <div class="root" ng-app="myapp" ng-controller="string_limit_ctrl">
+        
+        <p>Static 5 Character Limit String ➞ <q >{{string | limitTo: 5}}</q></p>
+
+        <label for="string_len">No of Characters Displayed</label> 
+        <input type="number" name="string_len" id="string_len" ng-model="slen">
+        <p>String ➞ {{dstring| limitTo: slen}}</p>
+
+        <label for="array_len">No of Words Displayed</label> 
+        <input type="number" name="array_len" id="array_len" ng-model="alen">
+        <p>Array ➞ {{darray| limitTo: alen}}</p>
+    </div>
+    <script>
+        myapp= angular.module("myapp", []);
+        myapp.controller("string_limit_ctrl", function($scope){
+            $scope.string= "Pellentesque";
+            $scope.dstring= "Praesent vitae urna a metus ultricies elementum nec in leo";
+            $scope.darray= "Maecenas interdum purus nec dolor porttitor, in ornare quam aliquet".split(' ');
+        });
+    </script>
+</body>
+</html>
