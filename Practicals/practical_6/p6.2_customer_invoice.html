@@ -1,9 +1,9 @@
-<!-- Use service -->
 <!--
 p6.2_customer_invoice.html
 Author: Jagrut Gala
-Date: 05-09-2021
-Objective: 
+Date: 24-08-2021
+Practical: 6
+Objective: WAP to accept customer name, mobile number, product item, quantity as well as price and on click of display button display total amount.(using services)
 -->
 
 <!DOCTYPE html>
@@ -14,62 +14,80 @@ Objective:
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="..\angular.min.js"></script>
+    <style>
+        .root {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .root> * {
+            margin-top: 1rem;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+        table, tr, th, td {
+            border: 1px solid black;
+            padding: 0.2rem 0.5rem;
+        }
+
+        input, select {
+            border: 0;
+        }
+    </style>
 </head>
 <body>
-    <div class="root" ng-app="myapp">
-        <section ng-controller="invoice_ctrl">
+    <div class="root" ng-app="myapp" ng-controller="customer_ctrl">
+        <h1>Customer Invoice</h1>
+        <section class="content">
             <table>
                 <tr>
                     <th>Name</th>
-                    <td><input type="text" name="name" id="name" ng-model="name"></td>
-                </tr>
-                <tr>
                     <th>Contact</th>
-                    <td><input type="text" name="contact" id="contact" ng-model="contact"></td>
-                </tr>
-                <tr>
-                    <th>Gender</th>
-                    <td><input type="text" name="gender" id="gender" ng-model="gender"></td>
-                </tr>
-
-                <tr>
                     <th>Item</th>
-                    <td>
-                        <select name="item" id="item" ng-model="item">
-                            <option value="0">T-Shirt</option>
-                            <option value="1">Shirt</option>
-                            <option value="2">Pants</option>
-                            <option value="3">Shoes</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
                     <th>Price</th>
-                    <td><p ng-model="price" ng-bind="items[item]['price']"></p></td>
+                    <th>Quantity</th>
                 </tr>
                 <tr>
-                    <th>Quantity</th>
-                    <td><input type="number" name="quantity" id="quantity" ng-model="quantity"></td>
+                    <th><input type="text"></th>
+                    <th><input type="number"></th>
+                    <th>
+                        <select ng-model="selected_item" ng-options="i as i.name for i in items track by i.id"></select>
+                    </th>
+                    <th><span>{{selected_item.price}}</span></th>
+                    <th><input type="number" ng-model="quantity"></th>
                 </tr>
             </table>
-
-            <button ng-click="total(item, quantity)">Total</button>
-
-            <h2>Total: {{amt | currency: '₹'}}</h2>
         </section>
+        <button ng-click="total()">Total</button>
+        <p>Final Price: <b>{{final_price| currency:'₹'}}</b></p>
     </div>
 
     <script>
         myapp= angular.module("myapp", []);
-        myapp.controller("invoice_ctrl", function($scope){
-            $scope.items= [2,3,1,5];
-            $scope.item= "";
-            $scope.quantity= 1;
-            $scope.amt= 0;
-            $scope.total= function(item, quantity) {
-                $scope.amt= $scope.items[item]* quantity;
+        myapp.service("TotalService", function(){
+            this.total= function (price, quantity) {
+                return price* quantity;
             }
         });
+
+        myapp.controller('customer_ctrl', function($scope, TotalService){
+            $scope.items= [
+                {id: 0, name: "Bread", price: 35},
+                {id: 1, name: "Blood", price: 420},
+                {id: 2, name: "Berry", price: 20},
+                {id: 3, name: "Banana", price: 69},
+                {id: 4, name: "Burger", price: 50},
+            ];
+            $scope.selected_item= {id: 0, name: "Bread", price: 35};
+            $scope.quantity= 1;
+            $scope.total= function () {
+                $scope.final_price= TotalService.total($scope.selected_item.price, $scope.quantity)
+            }
+        });
+
     </script>
 </body>
 </html>
