@@ -37,8 +37,9 @@ Objective: Write an AngularJs script for the addition of two numbers using ng-in
             </section>
             <section>
                 <h1>ng-show</h1>
-                <input type="checkbox" id="dis" ng-model="dis"> <label for="dis">Undisable Button</label>
-                <button type="button" ng-disabled="!dis" ng-click="add(num3, num4)">Add</button>
+                <input type="checkbox" id="dis" ng-model="dis"> <label for="dis" ng-checked="true">Disable Button</label>
+                <button type="button" ng-disabled="dis" ng-click="add(num3, num4)">Add</button>
+                <p>Btn Disabled: {{!dis}}</p>
             </section>
 
             <section>

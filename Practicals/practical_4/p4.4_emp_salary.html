@@ -60,6 +60,7 @@ Objective: WAP in angularjs to initialize the data of employees. Create a custom
             }
         });
         myapp.controller("sal_ctrl", function($scope){
+            $scope.sal_limit= 5000;
             $scope.employees= [
                 {id: 1, name: "Lorem", salary: 1579},
                 {id: 2, name: "Ipsum", salary: 7312},

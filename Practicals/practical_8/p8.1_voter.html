@@ -1,0 +1,104 @@
+<!--
+p8.1_voter.html
+Author: Jagrut Gala
+Date: 07-09-2021
+Practical: 8
+Objective: WAP to accept voter details and check proper validation for name and age and nationality. Name should be uppercase, Age should not be less than 18 years. All are inputs required
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="root" ng-app="myapp" ng-controller="voter_ctrl">
+        <section class="v-form">
+            <form name="vote_form">
+                <p>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" ng-pattern="name_p" ng-model="name_" ng-required="true">
+                    <span class="error" ng-show="vote_form.name.$dirty && vote_form.name.$invalid">
+                        <span ng-show="vote_form.name.$error.required">Required</span>
+                        <span ng-show="vote_form.name.$error.pattern">Only Uppercase Characters Allowed</span>
+                    </span>
+                </p>
+                <p>
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age" ng-pattern="age_p" ng-model="age_" ng-required="true">
+                    <span class="error" ng-show="vote_form.age.$dirty && vote_form.age.$invalid">
+                        <span ng-show="vote_form.age.$error.required">Required</span>
+                        <span ng-show="vote_form.age.$error.pattern">Age must be 18 or above</span>
+                    </span>
+                </p>
+                <p>
+                    <label for="nationality">Nationality</label>
+                    <input type="text" id="nationality" name="nationality" ng-model="nat_" ng-required="true">
+                    <span class="error" ng-show="vote_form.nationality.$dirty && vote_form.nationality.$invalid">
+                        <span ng-show="vote_form.nationality.$error.required">Required</span>
+                    </span>
+                </p>
+                <p>
+                    <button type="submit" ng-disabled="vote_form.$invalid" ng-click="submit()">Submit</button>
+                    <button type="reset">Reset</button>
+                </p>
+            </form>
+        </section>
+        
+        <section class="v-detail" ng-show="details_visible">
+            <h2>Your Voter Details</h2>
+            <table>
+                <tr>
+                    <td>Name</td>
+                    <td>{{name_}}</td>
+                </tr>
+                <tr>
+                    <td>Age</td>
+                    <td>{{age_}}</td>
+                </tr>
+                <tr>
+                    <td>Nationality</td>
+                    <td>{{nat_}}</td>
+                </tr>
+            </table>
+            <button ng-click="clear()">Clear Details</button>
+        </section>
+    </div>
+
+    <script>
+        myapp= angular.module("myapp", []);
+        myapp.controller("voter_ctrl", function($scope){
+            $scope.name_p= /^[A-Z]+$/;
+            $scope.age_p= /^1[89]|[2-9][0-9]$/;
+            $scope.nat_p= /^\w+$/
+            $scope.name_= "";
+            $scope.age_= 18;
+            $scope.nat_= "";
+            $scope.details_visible= false;
+            $scope.submit= function() {
+                $scope.details_visible= true;
+            }
+
+            $scope.reset= function() {
+                $scope.name_= "NAME HERE";
+                $scope.age_= 18;
+                $scope.nat_= "Nationality";
+            }
+
+            $scope.clear= function() {
+                $scope.details_visible= false;
+                $scope.reset();
+            }
+        });
+    </script>
+</body>
+</html>
