@@ -1,0 +1,53 @@
+<!--
+p3.2_student_details.html
+Author: Jagrut Gala
+Date: 28-09-2021
+Practical: 3
+Objective: WAP in Angular JS to display 5 student details in table format.(using ngrepeat)
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="..\angular.min.js"></script>
+    <style>
+        table, tr, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 0.5rem 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="root" ng-app="myapp" ng-controller="student_ctrl">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>City</th>
+            </tr>
+
+            <tr ng-repeat="i in student_details">
+                <td>{{i.name}}</td>
+                <td>{{i.city}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        myapp= angular.module("myapp", []);
+        myapp.controller("student_ctrl", function($scope){
+            $scope.student_details = [
+                {name: 'Amit', city: 'Pune'},
+                {name: 'Sumit', city: 'Pune'},
+                {name: 'Rahul', city: 'Mumbai'},
+                {name: 'Sachin', city: 'Mumbai'},
+                {name: 'Archana', city: 'Mumbai'},
+            ];
+        });
+    </script>
+</body>
+</html>

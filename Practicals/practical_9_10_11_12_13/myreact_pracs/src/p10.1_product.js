@@ -15,7 +15,7 @@ class Card extends React.Component {
         return(
             <div style={{margin: "1rem", padding: "1.5rem", border: "1px solid black"}}>
             <h2>Product Name , {this.props.productName}</h2>
-            <img src={this.props.source}/>
+            <img src={this.props.source} style={{width: "150px", aspectRatio: "1/1"}}/>
             <p>Description</p>
             </div>
         )

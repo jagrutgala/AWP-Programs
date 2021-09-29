@@ -11,11 +11,9 @@ function Header() {
 }
 
 function Footer() {
-    const a_style= {
-        
-    };
-    const ul_style= {};
-    const layout_style= {};
+    const a_style= {color: "white", textDecoration: "none", display: "inline-block",margin: "0.5rem", padding: "0.2rem 0.5rem", border: "1px solid currentColor"};
+    const ul_style= {listStyle: "none", margin: "0 3rem"};
+    const layout_style= {display: "flex", justifyContent: "center", alignItems: "center",padding: "5rem 0.2rem",};
     return (
     <div style={layout_style}>
         <ul style={ul_style}>
@@ -41,10 +39,10 @@ function Footer() {
 
 function Institue() {
     return (
-    <div>
+    <>
         <Header />
         <Footer />
-    </div>
+    </>
     );
 }
 

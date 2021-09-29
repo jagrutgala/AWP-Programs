@@ -12,7 +12,7 @@ function EvenOdd() {
     const [Click, setClick] = useState(0); 
 
     return(
-        <div>
+        <div style={{padding: "0 3rem"}}>
             <p>No of Clicks {Click}</p>
             <p>Clicks is {Click%2== 0? <span>Even</span> : <span>Odd</span>}!</p>
             <button onClick={()=> setClick(Click+1)}>Click Me</button>

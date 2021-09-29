@@ -11,8 +11,10 @@ const afternoon= <span style={{color: "blue"}}>Afternoon</span>
 const evening= <span style={{color: "green"}}>Evening</span>
 var greet_element;
 
-var time_now= new Date(2021, 9, 13, 5, 30, 3);
+var time_now= new Date();
 //                Date(year, m, d,  h,  m,  s, mil)
+
+time_now.setHours(22);
 
 console.log(time_now.getHours());
 if(0< time_now.getHours() && time_now.getHours()< 12) {
@@ -26,6 +28,7 @@ if(0< time_now.getHours() && time_now.getHours()< 12) {
 function Greet() {
     return (
     <div>
+        <p>Time: {time_now.getHours()} : {time_now.getMinutes()}</p>
         <p>Hello {greet_element}</p>
     </div>
     );

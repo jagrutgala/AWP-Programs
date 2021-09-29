@@ -20,6 +20,7 @@ Q1] Write an angularjs script  for addition of two numbers using ng-init,ng-mode
 Q1] Write a program in angular js to accept first name, salary per day and total number of working days , 
     display first name with upper case filter and the total salary(salary per day*total no. of working days) 
     use currency filter (don’t use ng-click)
+Q2] extra write a program in angular js to display 5 student details in table format.(using ngrepeat)
 Q2] Write a program in angular js to display the programming language in the ascending order and descending order using filter . 
     initialize the data in js file.
 Q3] using angularjs display the student details who are live in pune in table format 
@@ -53,3 +54,17 @@ Q4] Write a program in AngularJS to initialize the data of employee.create custo
 *****Practical 5 [20 July 2021]*****
 Q1] Write a program in angular js to Use of ng-src. Create a food Menu List using ng-src. 
     Create table which display food image, Menu Name and price.Display atleast 5 Menu
+
+
+
+Practical 9 13-09-2021
+Q1] write a program In react js to display at-least five Netflix series name in the form of unorder list. 
+Q2] write a program in ReactJS to get current Hours and display Greeting Message. Exampleif 1 to 12 –Good Morning,12 to 4 Good Afternoon,4 to 12 good Evening
+
+Practical 10 13-09-2021
+Q1] Write a program in react js to create a Simple Web App for institute.) use functional component .(NOTE:Create separate file for heading and displaying list and apply CSS)
+
+**Q?] write a program in angular js to display 5 student details in table format.(using ngrepeat)
+
+
+

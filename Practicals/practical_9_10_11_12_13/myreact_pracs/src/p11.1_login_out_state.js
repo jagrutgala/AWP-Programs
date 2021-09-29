@@ -24,7 +24,7 @@ class LogInOut extends React.Component {
 
     render() {
         return (
-            <div>
+            <div style={{padding: "0 3rem"}}>
                 <h1>You are {this.state.login? <span>Log Out</span>: <span>Log In</span>}</h1>
                 <button onClick={this.logClick}>{this.state.login? <span>Log Out</span>: <span>Log In</span>}</button>
                 <p>{this.state.login}</p>

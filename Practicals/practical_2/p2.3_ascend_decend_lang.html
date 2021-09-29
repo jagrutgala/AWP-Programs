@@ -1,9 +1,9 @@
 <!--
-p3.2_ascend_decend_lang.html
+p2.3_ascend_decend_lang.html
 Author: Jagrut Gala
 Date: 13-07-2021
-Practical: 3
-Objective: WAP in angular js to display the programming language in the ascending order and descending order using filter. Initialize the data in js file.
+Practical: 2
+Objective: WAP in Angular JS to display the programming language in the ascending order and descending order using filter. Initialize the data in js file.
 -->
 
 <!DOCTYPE html>
@@ -13,7 +13,8 @@ Objective: WAP in angular js to display the programming language in the ascendin
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="..\angular.min.js"></script>
+    <script src="../angular.min.js"></script>
+    <script src="./p2.3_ascend_decend_lang.js"></script>
     <style>
         .root {
             display: flex;
@@ -39,20 +40,5 @@ Objective: WAP in angular js to display the programming language in the ascendin
             </ul>
         </section>
     </div>
-
-    <script>
-        myapp = angular.module("myapp", []);
-        myapp.controller("lang_ctrl", function ($scope) {
-            $scope.languages = [
-                {"tut": "HTML"},
-                {"tut": "Python"},
-                {"tut": "Java"},
-                {"tut": "Android"},
-                {"tut": "CSS"},
-                {"tut": "AngularJS"},
-                {"tut": "ReactJs"}
-            ];
-        });
-    </script>
 </body>
 </html>
